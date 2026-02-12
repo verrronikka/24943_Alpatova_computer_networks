@@ -1,6 +1,7 @@
-import pandas as pd
 import subprocess
 import re
+
+import pandas as pd
 
 
 def ping(host):
@@ -15,10 +16,9 @@ def create_csv(hosts):
     for host in hosts:
 
         result = ping(host)
-        ip = re.search("((\d+).(\d+).(\d+).(\d+))", result)
-        ttl = re.search("ttl=(\d+)", result)
-        rtt = re.search("time=(\d+).(\d+)", result)
-        loss = re.search("(\d+)%", result)
+        ip = re.search("((/d+).(/d+).(/d+).(/d+))", result)
+        ttl = re.search("ttl=(/d+)", result)
+        rtt = re.search("time=(/d+).(/d+)", result)
 
         if ttl:
             data.append({
